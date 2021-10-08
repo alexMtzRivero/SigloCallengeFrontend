@@ -1,5 +1,5 @@
 <template>
-  <div class="card flex-row align-items-center m-3 p-3">
+  <div class="card flex-row align-items-center my-3 p-3">
     <slot></slot>
   </div>
 </template>
