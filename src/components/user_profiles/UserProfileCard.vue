@@ -1,17 +1,21 @@
 <template>
   <div>
     <Card v-if="!isEditing">
-      <b-avatar class="mr-2" variant="primary" text="BV"></b-avatar>
-      <div class="mr-auto text-left">
-        <div text-left>{{ `${first_name} ${last_name}` }}</div>
-        <p class="mb-0">{{ email }}</p>
+      <div class="d-flex flex-row p-auto align-items-center">
+        <b-avatar class="mr-2" variant="primary">{{ username }}</b-avatar>
+        <div class="mr-auto text-left">
+          <b>{{ `${first_name} ${last_name}` }}</b>
+          <p class="mb-0">{{ email }}</p>
+        </div>
       </div>
-      <b-button class="m-1" @click="startEdit()" variant="outline-primary">
-        <fa-icon icon="pen" />
-      </b-button>
-      <b-button class="m-1" @click="deleteUser" variant="danger">
-        <fa-icon icon="trash" />
-      </b-button>
+      <div class="col-md-4">
+        <b-button class="m-1" @click="startEdit()" variant="outline-primary">
+          <fa-icon icon="pen" />
+        </b-button>
+        <b-button class="m-1" @click="deleteUser" variant="danger">
+          <fa-icon icon="trash" />
+        </b-button>
+      </div>
     </Card>
     <!-- totally should separate this in 2 components -->
     <Card v-else>

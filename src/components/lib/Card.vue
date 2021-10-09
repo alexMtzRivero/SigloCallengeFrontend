@@ -1,5 +1,15 @@
 <template>
-  <div class="card flex-row align-items-center my-3 p-3">
+  <div
+    class="
+      card
+      row
+      flex-row
+      align-items-center
+      justify-content-between
+      my-3
+      p-3
+    "
+  >
     <slot></slot>
   </div>
 </template>

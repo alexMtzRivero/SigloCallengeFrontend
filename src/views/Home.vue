@@ -5,7 +5,7 @@
       Registered users
     </h1>
     <div class="home container d-flex flex-col justify-content-center">
-      <div class="col-8 col-xs-14 px-3">
+      <div class="col-8 col-xs-12 px-3">
         <b-button
           variant="outline-primary"
           class="d-flex w-100 p-3 my-3 justify-content-center"
