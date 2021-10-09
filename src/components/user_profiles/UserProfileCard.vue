@@ -9,7 +9,7 @@
       <b-button class="m-1" @click="startEdit()" variant="outline-primary">
         <fa-icon icon="pen" />
       </b-button>
-      <b-button class="m-1" variant="danger">
+      <b-button class="m-1" @click="deleteUser" variant="danger">
         <fa-icon icon="trash" />
       </b-button>
     </Card>
@@ -80,7 +80,6 @@ export default {
   },
   data() {
     return {
-      isEditing: false,
       tempUser: {},
     };
   },
@@ -94,6 +93,11 @@ export default {
         email: this.email,
         username: this.username,
       };
+    },
+    deleteUser() {
+      if (confirm("Are you sure you want to delete this user?")) {
+        this.$emit("remove", this.pk, this.index);
+      }
     },
     saveChanges() {
       //the index is sent for a faster update of the data
