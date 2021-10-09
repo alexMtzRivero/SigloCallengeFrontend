@@ -62,11 +62,11 @@ export default {
   props: {
     first_name: {
       type: String,
-      default: "Unknown",
+      default: "Jon",
     },
     last_name: {
       type: String,
-      default: "also unknown",
+      default: "Doe",
     },
     username: {
       type: String,
