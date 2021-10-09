@@ -121,6 +121,7 @@ export default {
       }
       request.then(() => {
         this.isEditing = false;
+        alert("User saved successfully.");
       });
     },
     undoChanges() {
