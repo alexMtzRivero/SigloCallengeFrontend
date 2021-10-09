@@ -109,9 +109,9 @@ export default {
     userChanged(user, listIndex) {
       let request;
       if (user.pk) {
-        request = this.editUser(user, listIndex);
+        request = this.editUser({ user, listIndex });
       } else {
-        request = this.createUser(user, listIndex);
+        request = this.createUser({ user, listIndex });
       }
       request.then(() => {
         this.isEditing = false;

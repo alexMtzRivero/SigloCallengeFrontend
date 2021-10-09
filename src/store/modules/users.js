@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import callApi from "@/js/api"
 const state = {
     users:[]
@@ -15,32 +16,36 @@ const actions = {
             commit("setUsers", response)
         })
     },
-    editUser({commit},user,index){
+    editUser({commit},{user,listIndex}){
         callApi(`users/${user.pk}/`,"put",user).then(newUser=>{
-            commit("updateUser",index,newUser)
+            commit("updateUser",{listIndex,newUser})
         })
     },
-    deleteUser({commit},userPk,index){
+    deleteUser({commit},{userPk,listIndex}){
         if(userPk){
             //delete from DB
             callApi(`users/${userPk}/`,"delete").then(()=>{
                 //delete from local list
-                commit("removeUser", index)
+                commit("removeUser", listIndex)
             })    
         }else{
-            commit("removeUser", index)
+            commit("removeUser", listIndex)
         }
     },
-    createUser({commit},user,index){
+    createUser({commit},{user,listIndex}){
         callApi("users/","post",user).then(newUser=>{
-            commit("updateUser",index,newUser)
+            commit("updateUser",{listIndex,newUser})
         })
     },
 }
 
 const mutations = {
     removeUser:(state,index)=> state.users.splice(index, 1),
-    updateUser:(state,index,newUser)=> state.users[index] = newUser,
+    updateUser:(state,{listIndex,newUser})=> {
+        console.log("update",listIndex,newUser);
+        Vue.set(state.users,listIndex,newUser)
+    }
+        ,
     addEmptyUser: (state)=> state.users.unshift({}), 
     setUsers:(state,users)=> state.users = users
 }

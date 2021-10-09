@@ -27,8 +27,12 @@ const callApi = (url,method="get",payload)=>{
     return new Promise((resolve, reject) => {
         return fetch(`${env.apiHost}/${url}`,getDefaultHeaders(method,payload))
         .then((response)=>{
-            if(response.ok)
-            resolve(defaultResponse(response))
+            if(response.ok){
+                if(method == "delete")
+                    resolve()
+                else
+                    resolve(defaultResponse(response))
+            }
             else
             reject(response)
         },(error)=>{

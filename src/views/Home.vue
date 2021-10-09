@@ -43,7 +43,7 @@ export default {
     ...mapActions(["getUsers", "deleteUser"]),
     ...mapMutations(["addEmptyUser"]),
     removeUser(userPk, listIndex) {
-      this.deleteUser(userPk, listIndex);
+      this.deleteUser({ userPk, listIndex });
     },
   },
   mounted() {
