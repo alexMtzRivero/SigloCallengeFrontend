@@ -11,7 +11,6 @@ export default {
 </script>
 <style scoped>
 .card {
-  max-width: 684px;
   transition: border-color 0.5s ease-in;
 }
 .card:hover {

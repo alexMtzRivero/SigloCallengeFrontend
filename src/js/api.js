@@ -24,6 +24,7 @@ const getDefaultHeaders = (method='get',payload)=>{
 }
 
 const callApi = (url,method="get",payload)=>{
+    console.log(payload);
     return new Promise((resolve, reject) => {
         return fetch(`${env.apiHost}/${url}`,getDefaultHeaders(method,payload))
         .then((response)=>{
