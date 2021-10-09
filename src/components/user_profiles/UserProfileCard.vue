@@ -19,7 +19,9 @@
     </Card>
     <!-- totally should separate this in 2 components -->
     <Card v-else>
-      <b-avatar class="mr-2" variant="primary" text="BV"></b-avatar>
+      <b-avatar class="mr-2" variant="primary">{{
+        tempUser.username
+      }}</b-avatar>
       <div class="mr-auto text-left">
         <label for="">User name</label>
         <b-form-input
