@@ -95,7 +95,10 @@ export default {
     ...mapActions(["editUser", "createUser"]),
     startEdit() {
       this.isEditing = true;
-      this.tempUser = {
+      this.tempUser = this.getCopyOfUser();
+    },
+    getCopyOfUser() {
+      return {
         pk: this.pk,
         first_name: this.first_name,
         last_name: this.last_name,
