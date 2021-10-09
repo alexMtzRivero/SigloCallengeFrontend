@@ -23,7 +23,6 @@
           :last_name="user.last_name"
           :email="user.email"
           :username="user.username"
-          @change="userChanged"
           @remove="removeUser"
         />
       </div>
@@ -41,15 +40,8 @@ export default {
     ...mapGetters(["users"]),
   },
   methods: {
-    ...mapActions(["getUsers", "editUser", "createUser", "deleteUser"]),
+    ...mapActions(["getUsers", "deleteUser"]),
     ...mapMutations(["addEmptyUser"]),
-    userChanged(user, listIndex) {
-      if (user.pk) {
-        this.editUser(user, listIndex);
-      } else {
-        this.createUser(user, listIndex);
-      }
-    },
     removeUser(userPk, listIndex) {
       this.deleteUser(userPk, listIndex);
     },

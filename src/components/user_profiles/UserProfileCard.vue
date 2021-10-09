@@ -51,6 +51,7 @@
 
 <script>
 import Card from "@/components/lib/Card.vue";
+import { mapActions } from "vuex";
 export default {
   first_name: "UserProfileCard",
   components: { Card },
@@ -80,10 +81,12 @@ export default {
   },
   data() {
     return {
+      isEditing: false,
       tempUser: {},
     };
   },
   methods: {
+    ...mapActions(["editUser", "createUser"]),
     startEdit() {
       this.isEditing = true;
       this.tempUser = {
@@ -101,7 +104,18 @@ export default {
     },
     saveChanges() {
       //the index is sent for a faster update of the data
-      this.$emit("change", this.tempUser, this.index);
+      this.userChanged(this.tempUser, this.index);
+    },
+    userChanged(user, listIndex) {
+      let request;
+      if (user.pk) {
+        request = this.editUser(user, listIndex);
+      } else {
+        request = this.createUser(user, listIndex);
+      }
+      request.then(() => {
+        this.isEditing = false;
+      });
     },
     undoChanges() {
       this.isEditing = false;
